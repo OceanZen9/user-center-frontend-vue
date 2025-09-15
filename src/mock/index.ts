@@ -66,24 +66,28 @@ Mock.mock(/\/api\/user\/current/, "get", {
 });
 
 // 模拟搜索用户列表
-Mock.mock(RegExp(/\/api\/user\/search/ + ".*"), "get", () => {
+Mock.mock(/\/api\/user\/search/, "get", () => {
   const userList = Mock.mock({
     "data|10": [
       {
         "id|+1": 1,
         username: "@cname",
         userAccount: "@word(8, 12)",
-        avatarUrl: "@image('100x100', '@color', '#FFF', 'png', '@word(1)')",
-        "gender|0-1": 0,
+        // 修正了引号问题
+        avatarUrl: "@image('100x100', '#50B347', '#FFF', 'png', '@word(1)')",
+        // 修正了随机数语法
+        gender: "@integer(0, 1)",
         phone: /^1[3456789]\d{9}$/,
         email: "@email",
         userStatus: 0,
-        "userRole|0-1": 0,
+        // 修正了随机数语法
+        userRole: "@integer(0, 1)",
         createTime: "@datetime",
         updateTime: "@datetime",
       },
     ],
   });
+
   return {
     code: 0,
     data: userList.data,
