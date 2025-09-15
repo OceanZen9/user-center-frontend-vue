@@ -6,8 +6,8 @@ import Antd from "ant-design-vue";
 import "ant-design-vue/dist/reset.css";
 import "@/access";
 
-if (process.env.NODE_ENV === 'development') {
-  require('@/mock');
+if (process.env.NODE_ENV === "development") {
+  require("@/mock");
 }
 
 const pinia = createPinia();
