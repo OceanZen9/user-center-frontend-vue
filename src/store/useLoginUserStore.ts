@@ -9,8 +9,8 @@ export const useLoginUserStore = defineStore("loginUser", () => {
 
   async function fetchLoginUser() {
     const res = await getCurrentUser();
-    if (res.data.code === 0 && res.data.data) {
-      loginUser.value = res.data.data;
+    if (res.code === 0 && res.data) {
+      loginUser.value = res.data;
     }
   }
 
