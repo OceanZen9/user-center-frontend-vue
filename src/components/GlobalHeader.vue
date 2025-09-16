@@ -17,7 +17,13 @@
       </a-col>
       <a-clo flex="80px">
         <div class="user-login-status">
-          <div v-if="loginUserStore.loginUser.id">
+          <div v-if="loginUserStore.isLoding">
+            <a-skeleton-input
+              style="width: 80px; height: 32px"
+              :active="true"
+            />
+          </div>
+          <div v-else-if="loginUserStore.loginUser.id">
             {{ loginUserStore.loginUser.name }}
           </div>
           <div v-else>
